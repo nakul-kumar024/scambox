@@ -2,259 +2,275 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Chatbox</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Poppins', sans-serif;
-        }
+  <meta charset="UTF-8" />
+  <title>Chatbox</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
 
-        body {
-            background-image: url('back2back.jpg');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(2px);
-        }
+    body {
+      background-image: url('back2back.jpg');
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      backdrop-filter: blur(2px);
+    }
 
-        .chat-container {
-            width: 420px;
-            height: 620px;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(10px);
-            border-radius: 25px;
-            box-shadow: 0 8px 40px rgba(255, 255, 255, 0.1);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            animation: fadeIn 1s ease-in-out;
-        }
+    .chat-container {
+      width: 100%;
+      max-width: 500px;
+      height: 90vh;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+      border-radius: 25px;
+      box-shadow: 0 8px 40px rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      animation: fadeIn 1s ease-in-out;
+    }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
 
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
 
-        .chat-header {
-            padding: 20px;
-            text-align: center;
-            background: rgba(255, 255, 255, 0.05);
-            color: #ffffff;
-            font-weight: 600;
-            font-size: 1.4rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            animation: slideDown 0.8s ease-in-out;
-        }
+    .chat-header {
+      padding: 20px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.05);
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 1.4rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      animation: slideDown 0.8s ease-in-out;
+    }
 
-        @keyframes slideDown {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
+    @keyframes slideDown {
+      from {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
 
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
 
-        .chat-box {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
+    .chat-box {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
 
-        .chat-box::-webkit-scrollbar {
-            width: 8px;
-            /* Width of the scrollbar */
-        }
+    .chat-box::-webkit-scrollbar {
+      width: 8px;
+    }
 
-        .chat-box::-webkit-scrollbar-track {
-            background: rgba(45, 43, 43, 0.3);
-            /* Track in a dark black-gray theme */
-            border-radius: 10px;
-            /* Rounded corners */
-        }
+    .chat-box::-webkit-scrollbar-track {
+      background: rgba(45, 43, 43, 0.3);
+      border-radius: 10px;
+    }
 
-        .chat-box::-webkit-scrollbar-thumb {
-            background: rgba(39, 38, 38, 0.8);
-            /* Thumb in a darker black tone */
-            border-radius: 10px;
-            /* Rounded corners for thumb */
-            border: 2px solid rgba(50, 50, 50, 0.5);
-            /* Slight border for detail */
-        }
+    .chat-box::-webkit-scrollbar-thumb {
+      background: rgba(39, 38, 38, 0.8);
+      border-radius: 10px;
+      border: 2px solid rgba(50, 50, 50, 0.5);
+    }
 
-        .chat-box::-webkit-scrollbar-thumb:hover {
-            background: rgba(30, 30, 30, 0.9);
-            /* Darker tone on hover */
-        }
+    .chat-box::-webkit-scrollbar-thumb:hover {
+      background: rgba(30, 30, 30, 0.9);
+    }
 
+    .chat-message {
+      max-width: 100%;
+      padding: 12px 16px;
+      border-radius: 18px;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      word-wrap: break-word;
+      animation: messageAppear 0.5s ease-in-out;
+      white-space: pre-wrap;
+    }
 
-        .chat-message {
-            max-width: 80%;
-            padding: 12px 16px;
-            border-radius: 18px;
-            font-size: 0.95rem;
-            line-height: 1.4;
-            word-wrap: break-word;
-            animation: messageAppear 0.5s ease-in-out;
-        }
+    @keyframes messageAppear {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
 
-        @keyframes messageAppear {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    .user-message {
+      align-self: flex-end;
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
+      color: white;
+    }
 
-        .user-message {
-            align-self: flex-end;
-            background: linear-gradient(135deg, #00c6ff, #0072ff);
-            color: white;
-        }
+    .bot-message {
+      align-self: flex-start;
+      background: rgba(255, 255, 255, 0.1);
+      color: #eee;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
 
-        .bot-message {
-            align-self: flex-start;
-            background: rgba(255, 255, 255, 0.1);
-            color: #eee;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
+    .chat-input {
+      display: flex;
+      padding: 15px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.03);
+      animation: slideUp 0.8s ease-in-out;
+    }
 
-        .chat-input {
-            display: flex;
-            padding: 15px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.03);
-            animation: slideUp 0.8s ease-in-out;
-        }
+    @keyframes slideUp {
+      from {
+        transform: translateY(50px);
+        opacity: 0;
+      }
 
-        @keyframes slideUp {
-            from {
-                transform: translateY(50px);
-                opacity: 0;
-            }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
 
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
+    .chat-input input {
+      flex: 1;
+      padding: 10px 15px;
+      border-radius: 50px;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+      transition: background-color 0.3s ease;
+    }
 
-        .chat-input input {
-            flex: 1;
-            padding: 10px 15px;
-            border-radius: 50px;
-            border: none;
-            outline: none;
-            font-size: 1rem;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: white;
-            transition: background-color 0.3s ease;
-        }
+    .chat-input input:focus {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
 
-        .chat-input input:focus {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
+    .chat-input input::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
 
-        .chat-input input::placeholder {
-            color: rgba(255, 255, 255, 0.5);
-        }
+    .chat-input button {
+      margin-left: 10px;
+      background: linear-gradient(to right, #8360c3, #2ebf91);
+      border: none;
+      border-radius: 50px;
+      padding: 10px 20px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
 
-        .chat-input button {
-            margin-left: 10px;
-            background: linear-gradient(to right, #8360c3, #2ebf91);
-            border: none;
-            border-radius: 50px;
-            padding: 10px 20px;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-        }
+    .chat-input button:hover {
+      transform: scale(1.1);
+      opacity: 0.85;
+    }
 
-        .chat-input button:hover {
-            transform: scale(1.1);
-            opacity: 0.85;
-        }
-    </style>
+    @media (max-width: 500px) {
+      .chat-header {
+        font-size: 1.2rem;
+        padding: 15px;
+      }
+
+      .chat-input input {
+        font-size: 0.9rem;
+      }
+
+      .chat-input button {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+      }
+
+      .chat-message {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <div class="chat-container">
-        <div class="chat-header">CHATBOX</div>
-        <div class="chat-box" id="chat-box"></div>
-        <div class="chat-input">
-            <input type="text" id="user-input" placeholder="Hello You...">
-            <button onclick="sendMessage()">Send</button>
-        </div>
+  <div class="chat-container">
+    <div class="chat-header">CHATBOX</div>
+    <div class="chat-box" id="chat-box"></div>
+    <div class="chat-input">
+      <input type="text" id="user-input" placeholder="Hello You..." />
+      <button onclick="sendMessage()">Send</button>
     </div>
+  </div>
 
-    <script>
-        const chatBox = document.getElementById("chat-box");
-        const userInput = document.getElementById("user-input");
+  <script>
+    const chatBox = document.getElementById("chat-box");
+    const userInput = document.getElementById("user-input");
 
-        function addMessage(message, className) {
-            const div = document.createElement("div");
-            div.className = `chat-message ${className}`;
-            div.textContent = message;
-            chatBox.appendChild(div);
-            chatBox.scrollTop = chatBox.scrollHeight;
-        }
+    function addMessage(message, className) {
+      const div = document.createElement("div");
+      div.className = `chat-message ${className}`;
+      div.textContent = message;
+      chatBox.appendChild(div);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
 
-        async function sendMessage() {
-            const message = userInput.value.trim();
-            if (!message) return;
+    async function sendMessage() {
+      const message = userInput.value.trim();
+      if (!message) return;
 
-            addMessage(message, "user-message");
-            userInput.value = "";
+      addMessage(message, "user-message");
+      userInput.value = "";
 
-            addMessage("Typing...", "bot-message");
+      addMessage("Typing...", "bot-message");
 
-            try {
-                const res = await fetch("/ask", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ message })
-                });
-
-                const data = await res.json();
-
-                document.querySelector(".bot-message:last-child").remove();
-                addMessage(data.reply, "bot-message");
-            } catch (err) {
-                document.querySelector(".bot-message:last-child").remove();
-                addMessage("Oops! Something went wrong.", "bot-message");
-            }
-        }
-
-        userInput.addEventListener("keypress", function (e) {
-            if (e.key === "Enter") sendMessage();
+      try {
+        const res = await fetch("/ask", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message })
         });
-    </script>
+
+        const data = await res.json();
+
+        document.querySelector(".bot-message:last-child").remove();
+        addMessage(data.reply, "bot-message");
+      } catch (err) {
+        document.querySelector(".bot-message:last-child").remove();
+        addMessage("Oops! Something went wrong.", "bot-message");
+      }
+    }
+
+    userInput.addEventListener("keypress", function (e) {
+      if (e.key === "Enter") sendMessage();
+    });
+  </script>
 </body>
 
 </html>
